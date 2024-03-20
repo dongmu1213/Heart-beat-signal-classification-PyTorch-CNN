@@ -97,7 +97,7 @@ def test_loop(dataloader, model, loss_fn):
     correct /= size
     print(f"Test Results:\nAccuracy: {(100 * correct):>0.1f}% abs-sum loss: {l1_loss:>8f} CroEtr loss: {test_loss:>8f}")
 
-
+## 此函数并未被调用
 def prediction(net, loss):
     """
         对数据进行预测

@@ -187,7 +187,7 @@ class Model(nn.Module):
         x = self.full_layer(x)
 
         if self.training:
-            return x
+            return x  ## 由于nn.CrossEntropyLoss()函数中已经集成了softmax层，因此在训练网络中，不需要再次添加softmax层，然后容易导致模型无法拟合；在测试过程中，由于不需要计算损失函数进行参数优化，因此需要添加softmax层
         else:
             return self.pred_layer(x)
 

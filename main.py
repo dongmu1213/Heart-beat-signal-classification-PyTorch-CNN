@@ -55,7 +55,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     :param optimizer: 优化器
     :return: None
     """
-    model.train()
+    model.train()  ## 调用此函数时，模型进入训练模式，启用如Dropout、Batchnorm等功能
     for batch, x_y in enumerate(dataloader):
         X, y = x_y[:, :205].type(torch.float64), torch.tensor(x_y[:, 205], dtype=torch.long, device='cuda:0')
         with torch.set_grad_enabled(True):
@@ -81,7 +81,7 @@ def test_loop(dataloader, model, loss_fn):
     # 用来计算abs-sum. 等于PyTorch L1Loss
     l1loss_fn = AbsSumLoss()
     with torch.no_grad(): 
-        model.eval()
+        model.eval()  ## 调用此函数，模型进入评估模式，不启用BatchNorm和Dropout，参数不会更新
         for x_y in dataloader:
             X, y = x_y[:, :205].type(torch.float64), torch.tensor(x_y[:, 205], dtype=torch.long, device='cuda:0')
             # Y用来计算L1 loss, y是CrossEntropy loss.

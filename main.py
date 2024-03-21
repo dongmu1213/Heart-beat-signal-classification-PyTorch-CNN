@@ -207,6 +207,7 @@ if __name__ == '__main__':
     # 加载数据集
     data = pd.read_csv('train.csv')
     data = process_data(data)
+    ## 下面两端构建的pred_data数据貌似并未用到
     pred_data = pd.read_csv('testB.csv')
     pred_data = get_pred_x(pred_data)
 
@@ -224,7 +225,7 @@ if __name__ == '__main__':
     loss_fn = nn.CrossEntropyLoss(reduction='sum')
 
     # 拆分训练测试集
-    train, test = train_test_split(data, test_size=0.2)
+    train, test = train_test_split(data, test_size=0.2) ## test_size表示测试集的占比
     train, test = torch.cuda.FloatTensor(train), torch.cuda.FloatTensor(test)
     train_loader = torch.utils.data.DataLoader(dataset=train, batch_size=b_size, shuffle=True)
     test_loader = torch.utils.data.DataLoader(dataset=test, batch_size=b_size)

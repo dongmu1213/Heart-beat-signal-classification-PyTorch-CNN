@@ -7,6 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+## 设置一个随机种子，固定模型的随机性，用于确保机器学习和数据处理中结果的可复现性
 def set_random_seed(state=1):
     """
         设定随机种子

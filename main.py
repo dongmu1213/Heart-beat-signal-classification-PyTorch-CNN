@@ -80,6 +80,7 @@ def test_loop(dataloader, model, loss_fn):
     test_loss, correct, l1_loss = 0, 0, 0
     # 用来计算abs-sum. 等于PyTorch L1Loss
     l1loss_fn = AbsSumLoss()
+    ## 调用torch.no_grad()函数，停止autograd模块的工作，起到加速和节省显存的作用
     with torch.no_grad(): 
         model.eval()  ## 调用此函数，模型进入评估模式，不启用BatchNorm和Dropout，参数不会更新
         for x_y in dataloader:

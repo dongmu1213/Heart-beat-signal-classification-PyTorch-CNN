@@ -76,7 +76,7 @@ def test_loop(dataloader, model, loss_fn):
     :param loss_fn: 损失函数
     :return: None
     """
-    size = len(dataloader.dataset)
+    size = len(dataloader.dataset)  ## dataloader.dataset为加载的数据集
     test_loss, correct, l1_loss = 0, 0, 0
     # 用来计算abs-sum. 等于PyTorch L1Loss
     l1loss_fn = AbsSumLoss()

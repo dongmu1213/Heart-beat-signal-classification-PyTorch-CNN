@@ -33,7 +33,7 @@ def process_data(data):
         res.append(x_res)
     return np.array(res, dtype=np.float64)  ## dtype=np.float64这个很关键，不然存在里面的是字符串，如“0.90”
 
-
+## 此函数貌似没用到
 def get_pred_x(data):
     """
         处理需要预测数据的DataFrame

@@ -58,7 +58,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     """
     model.train()  ## 调用此函数时，模型进入训练模式，启用如Dropout、Batchnorm等功能
     for batch, x_y in enumerate(dataloader):
-        X, y = x_y[:, :205].type(torch.float64), torch.tensor(x_y[:, 205], dtype=torch.long, device='cuda:0')
+        X, y = x_y[:, :205].type(torch.float64), torch.tensor(x_y[:, 205], dtype=torch.long, device='cuda:0')   ## dtype = torch.long 将float32数据转换为int64数据类型
         with torch.set_grad_enabled(True):
             # Compute prediction and loss
             pred = model(X.float())

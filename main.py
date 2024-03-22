@@ -87,6 +87,7 @@ def test_loop(dataloader, model, loss_fn):
         for x_y in dataloader:
             X, y = x_y[:, :205].type(torch.float64), torch.tensor(x_y[:, 205], dtype=torch.long, device='cuda:0')
             # Y用来计算L1 loss, y是CrossEntropy loss.
+            ## Y就是标签数据对应的one-hot码
             Y = torch.zeros(size=(len(y), 4), device='cuda:0')
             for i in range(len(Y)):
                 Y[i][y[i]] = 1

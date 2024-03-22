@@ -27,11 +27,11 @@ def process_data(data):
     """
     res = []
     for i in range(data.shape[0]):
-        x_res = data.iloc[i, 1].split(',')
+        x_res = data.iloc[i, 1].split(',')   ## .iloc是pandas库中用于按位置选择行和列的方法，如data.iloc[:,:3]，提取所有行，前三列的数据。注：.split（）只用于单行，不能执行多行
         label = data.iloc[i, 2]
         x_res.append(label)
         res.append(x_res)
-    return np.array(res, dtype=np.float64)
+    return np.array(res, dtype=np.float64)  ## dtype=np.float64这个很关键，不然存在里面的是字符串，如“0.90”
 
 
 def get_pred_x(data):

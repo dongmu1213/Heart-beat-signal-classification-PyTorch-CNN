@@ -92,9 +92,9 @@ def test_loop(dataloader, model, loss_fn):
             for i in range(len(Y)):
                 Y[i][y[i]] = 1
             pred = model(X.float())
-            test_loss += loss_fn(pred, y).item()  
-            l1_loss += l1loss_fn(pred, Y).item()  
-            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+            test_loss += loss_fn(pred, y).item()                                ## 计算交叉熵损失
+            l1_loss += l1loss_fn(pred, Y).item()                                ## 转为one-hot码后，计算abs-sum
+            correct += (pred.argmax(1) == y).type(torch.float).sum().item()     ## 计算准确率
 
     test_loss /= size 
     correct /= size
